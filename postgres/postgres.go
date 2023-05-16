@@ -25,7 +25,7 @@ func connect() {
 	}
 
 	var name string
-	err = DB.QueryRow("SELECT * FROM pg_catalog.pg_tables;").Scan(&name)
+	err = DB.QueryRow("SELECT id from users;").Scan(&name)
 
 	if err != nil {
 		fmt.Println(err)
@@ -33,6 +33,9 @@ func connect() {
 
 	fmt.Println(name)
 }
+
+// select column_name, data_type, character_maximum_length, column_default, is_nullable
+// from INFORMATION_SCHEMA.COLUMNS where table_name = 'articles';
 
 func query() {
 
